@@ -1,0 +1,39 @@
+---
+import Account from "./Icons/Account.astro";
+import Logo from "./Icons/Logo.astro";
+import Region from "./Icons/Region.astro";
+import Support from "./Icons/Support.astro";
+const routes = ["Vehículos", "Energía", "Carga", "Descubir", "Tienda"];
+---
+
+<header class="fixed w-full py-2 px-8 flex justify-between items-center">
+  <div class="flex-1">
+    <Logo />
+  </div>
+  <nav>
+    <ul class="flex items-center">
+      {
+        routes.map((route) => (
+          <li>
+            <a href="#" class="inline-block py-2 px-3">
+              {route}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+  <nav class="flex-1 flex justify-end">
+    <ul
+      class="flex items-center [&>li>a]:py-2 [&>li>a]:px-2 [&>li>a]:inline-block"
+    >
+      <li><a href="#"><Support /></a></li>
+      <li><a href="#"><Region /></a></li>
+      <li><a href="#"><Account /></a></li>
+    </ul>
+  </nav>
+</header>
+
+<script>
+  // hover pointer
+</script>
