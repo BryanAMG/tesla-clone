@@ -25,15 +25,35 @@ const routes = ["Vehículos", "Energía", "Carga", "Descubir", "Tienda"];
   </nav>
   <nav class="flex-1 flex justify-end">
     <ul
-      class="flex items-center [&>li>a]:py-2 [&>li>a]:px-2 [&>li>a]:inline-block"
+      class="flex items-center [&>li>a]:py-1 [&>li>a]:px-2 [&>li>a]:inline-block"
     >
-      <li><a href="#"><Support /></a></li>
-      <li><a href="#"><Region /></a></li>
-      <li><a href="#"><Account /></a></li>
+      <li class="grid place-items-center"><a href="#"><Support /></a></li>
+      <li class="grid place-items-center"><a href="#"><Region /></a></li>
+      <li class="grid place-items-center"><a href="#"><Account /></a></li>
     </ul>
   </nav>
+  <div
+    id="cursor"
+    class="-z-10 transition-all duration-300 absolute left-0 top-0 bg-black/5 backdrop-blur-lg rounded opacity-0"
+  >
+  </div>
 </header>
 
 <script>
   // hover pointer
+  const $links = document.querySelectorAll("header nav li");
+  const $backdropMenu = document.querySelector("#cursor");
+  $links.forEach(($link) => {
+    $link.addEventListener("mouseleave", () => {
+      $backdropMenu.setAttribute("style", "opacity : 0");
+    });
+
+    $link.addEventListener("mouseenter", () => {
+      const { width, height, left, top } = $link.getBoundingClientRect();
+      $backdropMenu.setAttribute(
+        "style",
+        `opacity: 1; transform: translate(${left}px, ${top}px); width: ${width}px; height:${height}px`
+      );
+    });
+  });
 </script>
